@@ -1,12 +1,15 @@
-import { StatusBar } from 'expo-status-bar';
+import { Appbar, PaperProvider } from "react-native-paper";
 import { StyleSheet, Text, View } from 'react-native';
 import { Login } from "./Screens/Login"
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Login />
-      <StatusBar style="auto" />
-    </View>
+    <PaperProvider>
+    <NavigationContainer>
+     <Stack.Navigator initialRouteName="Login">
+       <Stack.Screen name="Home" component={Home}/>
+     </Stack.Navigator>
+    </NavigationContainer>
+   </PaperProvider>
   );
 }
 

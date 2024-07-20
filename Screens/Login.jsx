@@ -2,33 +2,88 @@ import { View, Text } from "react-native";
 import { Button, TextInput } from "react-native-paper";
 import { StyleSheet } from "react-native";
 import * as React from "react";
+import { getAuth, createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword } from "firebase/auth";
+import { useState } from "react";
 
-export function Login() {
-  const [email, setEmail] = React.useState("");
-  const [password, setPassword] = React.useState("");
+export default function Login({ navigation }) {
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
+  const [error, setError] = useState("")
+  const auth = getAuth();
+
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      // User is signed in, see docs for a list of available properties
+      // https://firebase.google.com/docs/reference/js/auth.user
+      const uid = user.uid;
+      navigation.navigate("Home")
+      // ...
+    } else {
+      // User is signed out
+      // ...
+      navigation.navigate("Login")
+    }
+  });
+
+  function handleLogin() {
+
+    //  createUserWithEmailAndPassword(auth, email, password)
+    //      .then((userCredential) => {
+    //         //  Signed in 
+    //          const user = userCredential.user;
+    //          alert(user.email + "logado")
+    //      })
+    //      .catch((error) => {
+    //          const errorCode = error.code;
+    //          const errorMessage = error.message;
+    //          console.log(errorMessage);
+    //          console.log(errorCode);
+    //          alert("Não foi possível realizar o login")
+    //      });
+
+    signInWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        // Signed in 
+        const user = userCredential.user;
+        // ...
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.log(errorMessage);
+        console.log(errorCode);
+      });
+console.log(email, password);
+  }
+
+  function handleForget() {
+
+  }
+
   return (
     <View style={styles.container}>
-        <Text
+      <Text
         style={styles.text}
-        >
-            PILLreminder
-        </Text>
+      >
+        PILLreminder
+      </Text>
       <TextInput
         style={styles.textInput}
         label="Email"
         value={email}
-        onChangeText={(email) => setEmail(email)}
+        onChangeText={setEmail}
       />
       <TextInput
         style={styles.textInput}
         label="Senha"
+        secureTextEntry
         value={password}
-        onChangeText={(password) => setPassword(password)}
+        onChangeText={setPassword}
       />
       <Button
         style={styles.button}
         mode="contained"
-        onPress={() => console.log("Pressed")}
+        onPress={handleLogin}
       >
         Entrar
       </Button>
@@ -41,6 +96,7 @@ const styles = StyleSheet.create({
     flexDirection: "column",
     gap: 50,
     justifyContent: "center",
+    alignItems: "center",
     padding: 24,
     backgroundColor: "#fff",
   },

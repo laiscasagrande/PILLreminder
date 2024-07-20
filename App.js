@@ -1,7 +1,11 @@
 import { Appbar, PaperProvider } from "react-native-paper";
 import { StyleSheet, Text, View } from 'react-native';
-import { Login } from "./Screens/Login"
-export default function App() {
+import { NavigationContainer } from "@react-navigation/native";
+import { createStackNavigator } from '@react-navigation/stack';
+import Home from "./Screens/Home";
+
+export function App() {
+  const Stack  =createStackNavigator()
   return (
     <PaperProvider>
     <NavigationContainer>

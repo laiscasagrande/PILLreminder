@@ -2,7 +2,6 @@ import { View, Text } from "react-native";
 import { Button, TextInput } from "react-native-paper";
 import { StyleSheet } from "react-native";
 import * as React from "react";
-import { NavigationContainer } from "@react-navigation/native";
 
 export function Login() {
   const [email, setEmail] = React.useState("");

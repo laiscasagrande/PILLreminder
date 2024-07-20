@@ -1,30 +1,28 @@
-import { Appbar, PaperProvider } from "react-native-paper";
-import { StyleSheet, Text, View } from 'react-native';
 import { NavigationContainer } from "@react-navigation/native";
-import { createStackNavigator } from '@react-navigation/stack';
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { StatusBar } from "expo-status-bar";
+import { StyleSheet, Text, View } from "react-native";
+import { PaperProvider } from "react-native-paper";
 import Home from "./Screens/Home";
 
-export function App() {
-  const Stack  =createStackNavigator()
+export default function App() {
+  const Stack = createNativeStackNavigator();
   return (
     <PaperProvider>
-    <NavigationContainer>
-     <Stack.Navigator initialRouteName="Login">
-       <Stack.Screen name="Home" component={Home}/>
-     </Stack.Navigator>
-    </NavigationContainer>
-   </PaperProvider>
+      <NavigationContainer>
+        <Stack.Navigator initialRouteName="Login">
+          <Stack.Screen name="Home" component={Home} />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </PaperProvider>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    padding:20,
-    height:"full",
-    width:"full",
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: "#fff",
+    alignItems: "center",
+    justifyContent: "center",
   },
 });

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Avatar, Button, Card, Text } from 'react-native-paper';
 
-export function Home() {
+export default function Home() {
   const LeftContent = props => <Avatar.Icon {...props} icon="folder" />;
   return (
     <Card>

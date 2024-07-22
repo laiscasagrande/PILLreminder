@@ -1,9 +1,11 @@
-import * as React from 'react';
+import * as React from "react";
 import { Text, View, StyleSheet } from "react-native";
-import { Avatar, Card } from 'react-native-paper';
-import CardPill from './components/cardPill';
+import { Avatar, Button, Card, TextInput } from "react-native-paper";
+import CardPill from "./components/cardPill";
+
 
 export default function Home() {
+
   const LeftContent = props => <Avatar.Icon {...props} icon="folder" />;
 
   const remedy = [{
@@ -19,22 +21,24 @@ export default function Home() {
   ]
 
   return (
-    <View style={styles.container}>
-      {remedy.map(pill => {
-        return <CardPill
-          id={pill.id}
-          name={pill.name}
-          image={pill.image}
-        />
-      })}
-    </View>
+     <View style={styles.container}>
+       {remedy.map(pill => {
+         return <CardPill
+           id={pill.id}
+           name={pill.name}
+           image={pill.image}
+         />
+       })}
+     </View>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flexDirection: "column",
-    gap: 50,
-    overflow: "scroll"
-  }
-});
+ const styles = StyleSheet.create({
+   container: {
+     flexDirection: "column",
+     gap: 50,
+     overflow: "scroll"
+   }
+ });
+
+

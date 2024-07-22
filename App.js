@@ -4,7 +4,7 @@ import { initializeApp } from 'firebase/app';
 import { initializeAuth } from "firebase/auth";
 import { StyleSheet } from "react-native";
 import { PaperProvider } from "react-native-paper";
-import Home from "./Screens/Home";
+import UserRegistration from "./Screens/UserRegistration";
 import Login from "./Screens/Login";
 
 export default function App() {
@@ -31,7 +31,7 @@ export default function App() {
       <NavigationContainer>
         <Stack.Navigator initialRouteName="Login">
         <Stack.Screen name="Login" component={Login}/>
-          <Stack.Screen name="Home" component={Home} />
+          <Stack.Screen name="UserRegistration" component={UserRegistration} />
         </Stack.Navigator>
       </NavigationContainer>
     </PaperProvider>

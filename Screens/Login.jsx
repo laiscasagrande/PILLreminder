@@ -1,9 +1,8 @@
-import { View, Text } from "react-native";
-import { Button, TextInput } from "react-native-paper";
-import { StyleSheet } from "react-native";
+import { getAuth, onAuthStateChanged, signInWithEmailAndPassword } from "firebase/auth";
 import * as React from "react";
-import { getAuth, createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword } from "firebase/auth";
 import { useState } from "react";
+import { StyleSheet, Text, View } from "react-native";
+import { Button, TextInput } from "react-native-paper";
 
 export default function Login({ navigation }) {
   const [email, setEmail] = useState("")
@@ -68,12 +67,18 @@ console.log(email, password);
         PILLreminder
       </Text>
       <TextInput
+        mode="outlined"
+        outlineColor="transparent"
+        activeOutlineColor="purple"
         style={styles.textInput}
         label="Email"
-        value={email}
-        onChangeText={setEmail}
+        // value={email}
+        // onChangeText={setEmail}
       />
       <TextInput
+      mode="outlined"
+      outlineColor="transparent"
+      activeOutlineColor="purple"
         style={styles.textInput}
         label="Senha"
         secureTextEntry

@@ -1,39 +1,7 @@
-import { View } from "react-native";
-import { Text } from "react-native-paper";
-import { BottomNavigation } from "react-native-paper";
+import { View, StyleSheet } from "react-native";
+import { Text, TextInput, Button } from "react-native-paper";
 
-const MusicRoute = () => <Text></Text>;
-
-const AlbumsRoute = () => <Text></Text>;
-
-const RecentsRoute = () => <Text>Recents</Text>;
-
-const NotificationsRoute = () => <Text>Notifications</Text>;
-
-export function AddRemedy() {
-  const [index, setIndex] = React.useState(0);
-  const [routes] = React.useState([
-    {
-      key: "music",
-      title: "Home",
-      focusedIcon: "heart",
-      unfocusedIcon: "heart-outline",
-    },
-    { key: "albums", title: "Novo", focusedIcon: "album" },
-    // { key: "recents", title: "Lista", focusedIcon: "history" },
-    // {
-    //   key: "notifications",
-    //   title: "Notifications",
-    //   focusedIcon: "bell",
-    //   unfocusedIcon: "bell-outline",
-    // },
-  ]);
-  const renderScene = BottomNavigation.SceneMap({
-    music: MusicRoute,
-    albums: AlbumsRoute,
-    recents: RecentsRoute,
-    notifications: NotificationsRoute,
-  });
+export default function AddRemedy() {
   return (
     <>
       <View style={styles.content}>
@@ -73,12 +41,6 @@ export function AddRemedy() {
           Incluir
         </Button>
       </View>
-      <BottomNavigation
-        style={styles.footer}
-        navigationState={{ index, routes }}
-        onIndexChange={setIndex}
-        renderScene={renderScene}
-      />
     </>
   );
 }

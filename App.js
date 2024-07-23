@@ -7,6 +7,7 @@ import { PaperProvider } from "react-native-paper";
 import UserRegistration from "./Screens/UserRegistration";
 import Login from "./Screens/Login";
 import Home from "./Screens/Home";
+import AddRemedy from "./Screens/AddRemedy";
 
 export default function App() {
   const Stack = createNativeStackNavigator();
@@ -34,6 +35,7 @@ export default function App() {
         <Stack.Screen name="Login" component={Login}/>
           <Stack.Screen name="Home" component={Home} />
           <Stack.Screen name="UserRegistration" component={UserRegistration} />
+          <Stack.Screen name="AddRemedy" component={AddRemedy} />
         </Stack.Navigator>
       </NavigationContainer>
     </PaperProvider>

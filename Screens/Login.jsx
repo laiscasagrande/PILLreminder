@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import { View, Text} from "react-native";
 import { Button, TextInput } from "react-native-paper";
 import { StyleSheet } from "react-native";
@@ -11,13 +10,6 @@ import {
 } from "firebase/auth";
 import { useState } from "react";
 import { Link } from "@react-navigation/native";
-=======
-import { getAuth, onAuthStateChanged, signInWithEmailAndPassword } from "firebase/auth";
-import * as React from "react";
-import { useState } from "react";
-import { StyleSheet, Text, View } from "react-native";
-import { Button, TextInput } from "react-native-paper";
->>>>>>> b41f99c3ad48dcd27fc68390b2350f3fe9a6c697
 
 export default function Login({ navigation }) {
   const [email, setEmail] = useState("");
@@ -59,13 +51,7 @@ export default function Login({ navigation }) {
     <View style={styles.container}>
       <Text style={styles.text}>PILLreminder</Text>
       <TextInput
-<<<<<<< HEAD
       mode="outlined"
-=======
-        mode="outlined"
-        outlineColor="transparent"
-        activeOutlineColor="purple"
->>>>>>> b41f99c3ad48dcd27fc68390b2350f3fe9a6c697
         style={styles.textInput}
         label="Email"
         // value={email}
@@ -73,11 +59,6 @@ export default function Login({ navigation }) {
       />
       <TextInput
       mode="outlined"
-<<<<<<< HEAD
-=======
-      outlineColor="transparent"
-      activeOutlineColor="purple"
->>>>>>> b41f99c3ad48dcd27fc68390b2350f3fe9a6c697
         style={styles.textInput}
         label="Senha"
         secureTextEntry

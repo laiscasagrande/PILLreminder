@@ -6,6 +6,7 @@ import { StyleSheet } from "react-native";
 import { PaperProvider } from "react-native-paper";
 import UserRegistration from "./Screens/UserRegistration";
 import Login from "./Screens/Login";
+import Home from "./Screens/Home";
 
 export default function App() {
   const Stack = createNativeStackNavigator();
@@ -31,6 +32,7 @@ export default function App() {
       <NavigationContainer>
         <Stack.Navigator initialRouteName="Login">
         <Stack.Screen name="Login" component={Login}/>
+          <Stack.Screen name="Home" component={Home} />
           <Stack.Screen name="UserRegistration" component={UserRegistration} />
         </Stack.Navigator>
       </NavigationContainer>

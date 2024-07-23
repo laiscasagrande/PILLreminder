@@ -1,4 +1,4 @@
-import { View, Text} from "react-native";
+import { View, Text } from "react-native";
 import { Button, TextInput } from "react-native-paper";
 import { StyleSheet } from "react-native";
 import * as React from "react";
@@ -9,7 +9,8 @@ import {
   signInWithEmailAndPassword,
 } from "firebase/auth";
 import { useState } from "react";
-import { Link } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import UserRegistration from "./UserRegistration";
 
 export default function Login({ navigation }) {
   const [email, setEmail] = useState("");
@@ -17,12 +18,14 @@ export default function Login({ navigation }) {
   const [error, setError] = useState("");
   const auth = getAuth();
 
+  const Stack = createNativeStackNavigator();
+
   onAuthStateChanged(auth, (user) => {
     if (user) {
       // User is signed in, see docs for a list of available properties
       // https://firebase.google.com/docs/reference/js/auth.user
       const uid = user.uid;
-      navigation.navigate("UserRegistration");
+      navigation.navigate("Home");
       // ...
     } else {
       // User is signed out
@@ -47,27 +50,34 @@ export default function Login({ navigation }) {
     console.log(email, password);
   }
 
+  const navigationUserRegistration = () => {
+    navigation.navigate("UserRegistration");
+    console.log('click');
+  };
+
   return (
     <View style={styles.container}>
       <Text style={styles.text}>PILLreminder</Text>
       <TextInput
-      mode="outlined"
+        mode="outlined"
         style={styles.textInput}
         label="Email"
-        // value={email}
-        // onChangeText={setEmail}
+        value={email}
+        onChangeText={setEmail}
       />
       <TextInput
-      mode="outlined"
+        mode="outlined"
         style={styles.textInput}
         label="Senha"
         secureTextEntry
         value={password}
         onChangeText={setPassword}
       />
-      <Link>
-        É novo? Cadastre-se!
-      </Link>
+
+      <Button style={styles.buttonRegister} onPress={navigationUserRegistration}>
+        É novo por aqui? Cadastre-se!
+      </Button>
+
       <Button style={styles.button} mode="contained" onPress={handleLogin}>
         Entrar
       </Button>
@@ -106,5 +116,9 @@ const styles = StyleSheet.create({
     color: "#06957B",
     textAlign: "center",
     fontWeight: "bold",
+  },
+  buttonRegister: {
+    cursor: "pointer",
+    color: "#06957B",
   },
 });

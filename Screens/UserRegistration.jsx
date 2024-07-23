@@ -3,7 +3,7 @@ import { Button, Text, TextInput } from "react-native-paper";
 import { useState } from "react";
 import { createUserWithEmailAndPassword, getAuth } from "firebase/auth";
 
-export default function UserRegistration() {
+export default function UserRegistration({navigation}) {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -14,8 +14,8 @@ export default function UserRegistration() {
       .then((userCredential) => {
         //  Signed in
         const user = userCredential.user;
-        alert(user.email + "logado");
-        //navigation.navigate("Login");
+        alert(user.email + " cadastrado!");
+        navigation.navigate("Login");
       })
       .catch((error) => {
         const errorCode = error.code;

@@ -8,6 +8,7 @@ import UserRegistration from "./Screens/UserRegistration";
 import Login from "./Screens/Login";
 import Home from "./Screens/Home";
 import AddRemedy from "./Screens/AddRemedy";
+import NavigationBarBottom from "./Screens/components/ButtonNavigation";
 
 export default function App() {
   const Stack = createNativeStackNavigator();

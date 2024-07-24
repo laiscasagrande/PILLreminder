@@ -12,13 +12,10 @@ export default function Home() {
     {
       id: "1",
       name: "Amoxilina",
-      image:
-        "https://medicina.ribeirao.br/wp-content/uploads/2023/09/Amoxicilina-imagem-editorial-caixa-1536x1023.jpeg.webp",
     },
     {
       id: "2",
       name: "Paracetamol",
-      image: "https://picsum.photos/700",
     },
   ];
 
@@ -27,7 +24,7 @@ export default function Home() {
     <View style={styles.home}>
     <View style={styles.container}>
         {remedy.map((pill) => {
-          return <CardPill id={pill.id} name={pill.name} image={pill.image} />;
+          return <CardPill id={pill.id} name={pill.name}/>;
         })}
       </View>
       <NavigationBarBottom /> 

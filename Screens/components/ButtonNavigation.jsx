@@ -18,10 +18,10 @@ export default function NavigationBarBottom() {
 
   return (
     <View style={styles.footer}>
-      <Button onPress={navigationAddRemedy}>
+      <Button onPress={navigationHome}>
         <Icon source="home" size={27} color="#06957B"/>
       </Button>
-      <Button onPress={navigationHome}>
+      <Button onPress={navigationAddRemedy}>
       <Icon source="pill" size={27} color="#06957B"/>
       </Button>
     </View>

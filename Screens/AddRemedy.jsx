@@ -1,10 +1,27 @@
 import { View, StyleSheet } from "react-native";
 import { Text, TextInput, Button } from "react-native-paper";
+import NavigationBarBottom from "./components/ButtonNavigation";
+import { collection, addDoc } from "firebase/firestore"
+
+const createNewRemedy = async() => {
+  try {
+    const docRef = await addDoc(collection(db, "users"), {
+      first: "Ada",
+      last: "Lovelace",
+      born: 1815
+    });
+    console.log("Document written with ID: ", docRef.id);
+  } catch (e) {
+    console.error("Error adding document: ", e);
+  }
+}
 
 export default function AddRemedy() {
+
   return (
     <>
-      <View style={styles.content}>
+    <View style={styles.mainContainer}>
+    <View style={styles.content}>
         <Text style={styles.title}>ADICIONAR MEDICAMENTO</Text>
         <TextInput
           mode="outlined"
@@ -37,10 +54,12 @@ export default function AddRemedy() {
           // value={password}
           // onChangeText={setPassword}
         />
-        <Button style={styles.button} mode="contained">
+        <Button style={styles.button} mode="contained" onPress={createNewRemedy}>
           Incluir
         </Button>
       </View>
+      <NavigationBarBottom />
+    </View>
     </>
   );
 }
@@ -79,4 +98,8 @@ const styles = StyleSheet.create({
     backgroundColor: "#06957B",
     color: "#06957B",
   },
+  mainContainer: {
+flex: 1,
+justifyContent: "space-between",
+  }
 });

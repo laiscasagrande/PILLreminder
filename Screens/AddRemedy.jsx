@@ -27,6 +27,11 @@ export default function AddRemedy() {
           mode="outlined"
           style={styles.textInput}
           label="Nome do medicamento"
+          theme={{
+            colors: {
+              primary: '#06957B', // Remove a borda ao focar
+            },
+          }}
           // value={email}
           // onChangeText={setEmail}
         />
@@ -35,6 +40,11 @@ export default function AddRemedy() {
           style={styles.textInput}
           label="Dosagem"
           secureTextEntry
+          theme={{
+            colors: {
+              primary: '#06957B', // Remove a borda ao focar
+            },
+          }}
           // value={password}
           // onChangeText={setPassword}
         />
@@ -43,6 +53,11 @@ export default function AddRemedy() {
           style={styles.textInput}
           label="Período"
           secureTextEntry
+          theme={{
+            colors: {
+              primary: '#06957B', // Remove a borda ao focar
+            },
+          }}
           // value={password}
           // onChangeText={setPassword}
         />
@@ -51,6 +66,11 @@ export default function AddRemedy() {
           style={styles.textInput}
           label="Horário"
           secureTextEntry
+          theme={{
+            colors: {
+              primary: '#06957B', // Remove a borda ao focar
+            },
+          }}
           // value={password}
           // onChangeText={setPassword}
         />
@@ -93,6 +113,7 @@ const styles = StyleSheet.create({
     color: "#06957B",
     backgroundColor: "#06957B",
     fontSize: 50,
+    width: 300
   },
   footer: {
     backgroundColor: "#06957B",

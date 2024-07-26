@@ -64,6 +64,11 @@ export default function Login({ navigation }) {
         label="Email"
         value={email}
         onChangeText={setEmail}
+        theme={{
+          colors: {
+            primary: '#06957B', // Remove a borda ao focar
+          },
+        }}
       />
       <TextInput
         mode="outlined"
@@ -72,10 +77,15 @@ export default function Login({ navigation }) {
         secureTextEntry
         value={password}
         onChangeText={setPassword}
+        theme={{
+          colors: {
+            primary: '#06957B', // Remove a borda ao focar
+          },
+        }}
       />
 
       <Button style={styles.buttonRegister} onPress={navigationUserRegistration}>
-        É novo por aqui? Cadastre-se!
+        <Text style={styles.registerUser}>É novo por aqui? Cadastre-se!</Text>
       </Button>
 
       <Button style={styles.button} mode="contained" onPress={handleLogin}>
@@ -108,6 +118,7 @@ const styles = StyleSheet.create({
     color: "#06957B",
     backgroundColor: "#06957B",
     fontSize: 50,
+    width: 300
   },
   text: {
     fontSize: 40,
@@ -121,4 +132,8 @@ const styles = StyleSheet.create({
     cursor: "pointer",
     color: "#06957B",
   },
+  registerUser: {
+    color: "#06957B",
+
+  }
 });

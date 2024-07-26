@@ -39,6 +39,11 @@ export default function UserRegistration({navigation}) {
               label="Nome completo"
               value={name}
               onChangeText={setName}
+              theme={{
+                colors: {
+                  primary: '#06957B', // Remove a borda ao focar
+                },
+              }}
             />
             <TextInput
               mode="outlined"
@@ -46,6 +51,11 @@ export default function UserRegistration({navigation}) {
               label="Email"
               value={email}
               onChangeText={setEmail}
+              theme={{
+                colors: {
+                  primary: '#06957B', // Remove a borda ao focar
+                },
+              }}
             />
             <TextInput
               mode="outlined"
@@ -54,6 +64,11 @@ export default function UserRegistration({navigation}) {
               secureTextEntry
               value={password}
               onChangeText={setPassword}
+              theme={{
+                colors: {
+                  primary: '#06957B', // Remove a borda ao focar
+                },
+              }}
             />
           </View>
         </View>
@@ -106,6 +121,7 @@ const styles = StyleSheet.create({
     color: "#06957B",
     backgroundColor: "#06957B",
     fontSize: 50,
+    width: 300
   },
   footer: {
     backgroundColor: "#06957B",

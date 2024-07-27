@@ -3,7 +3,7 @@ import { Text, TextInput, Button } from "react-native-paper";
 import NavigationBarBottom from "./components/ButtonNavigation";
 import { collection, addDoc } from "firebase/firestore"
 
-const createNewRemedy = async() => {
+const createNewRemedy = async () => {
   try {
     const docRef = await addDoc(collection(db, "users"), {
       first: "Ada",
@@ -20,66 +20,70 @@ export default function AddRemedy() {
 
   return (
     <>
-    <View style={styles.mainContainer}>
-    <View style={styles.content}>
-        <Text style={styles.title}>ADICIONAR MEDICAMENTO</Text>
-        <TextInput
-          mode="outlined"
-          style={styles.textInput}
-          label="Nome do medicamento"
-          theme={{
-            colors: {
-              primary: '#06957B', // Remove a borda ao focar
-            },
-          }}
-          // value={email}
-          // onChangeText={setEmail}
-        />
-        <TextInput
-          mode="outlined"
-          style={styles.textInput}
-          label="Dosagem"
-          secureTextEntry
-          theme={{
-            colors: {
-              primary: '#06957B', // Remove a borda ao focar
-            },
-          }}
-          // value={password}
-          // onChangeText={setPassword}
-        />
-        <TextInput
-          mode="outlined"
-          style={styles.textInput}
-          label="Período"
-          secureTextEntry
-          theme={{
-            colors: {
-              primary: '#06957B', // Remove a borda ao focar
-            },
-          }}
-          // value={password}
-          // onChangeText={setPassword}
-        />
-        <TextInput
-          mode="outlined"
-          style={styles.textInput}
-          label="Horário"
-          secureTextEntry
-          theme={{
-            colors: {
-              primary: '#06957B', // Remove a borda ao focar
-            },
-          }}
-          // value={password}
-          // onChangeText={setPassword}
-        />
-        <Button style={styles.button} mode="contained" onPress={createNewRemedy}>
-          Incluir
-        </Button>
+      <View style={styles.mainContainer}>
+        <View style={styles.content}>
+          <View style={styles.viewInputs}>
+            <Text style={styles.title}>ADICIONAR MEDICAMENTO</Text>
+            <TextInput
+              mode="outlined"
+              style={styles.textInput}
+              label="Nome do medicamento"
+              theme={{
+                colors: {
+                  primary: '#06957B', // Remove a borda ao focar
+                },
+              }}
+            // value={email}
+            // onChangeText={setEmail}
+            />
+            <TextInput
+              mode="outlined"
+              style={styles.textInput}
+              label="Dosagem"
+              secureTextEntry
+              theme={{
+                colors: {
+                  primary: '#06957B', // Remove a borda ao focar
+                },
+              }}
+            // value={password}
+            // onChangeText={setPassword}
+            />
+            <TextInput
+              mode="outlined"
+              style={styles.textInput}
+              label="Período"
+              secureTextEntry
+              theme={{
+                colors: {
+                  primary: '#06957B', // Remove a borda ao focar
+                },
+              }}
+            // value={password}
+            // onChangeText={setPassword}
+            />
+            <TextInput
+              mode="outlined"
+              style={styles.textInput}
+              label="Horário"
+              secureTextEntry
+              theme={{
+                colors: {
+                  primary: '#06957B', // Remove a borda ao focar
+                },
+              }}
+            // value={password}
+            // onChangeText={setPassword}
+            />
+          </View>
+          <View>
+            <Button style={styles.button} mode="contained" onPress={createNewRemedy}>
+              Incluir
+            </Button>
+          </View>
+        </View>
       </View>
       <NavigationBarBottom />
-    </View>
     </>
   );
 }
@@ -92,8 +96,8 @@ const styles = StyleSheet.create({
   },
   content: {
     flexDirection: "column",
-    gap: 40,
-    justifyContent: "center",
+    height: "100%",
+    justifyContent: "space-between",
     alignItems: "center",
     padding: 24,
     backgroundColor: "#fff",
@@ -113,14 +117,20 @@ const styles = StyleSheet.create({
     color: "#06957B",
     backgroundColor: "#06957B",
     fontSize: 50,
-    width: 300
+    width: 300,
   },
   footer: {
     backgroundColor: "#06957B",
     color: "#06957B",
   },
   mainContainer: {
-flex: 1,
-justifyContent: "space-between",
+    flex: 1,
+    justifyContent: "space-between",
+  },
+  viewInputs: {
+    display: "flex",
+    flexDirection: "column",
+    gap: 30,
+    alignItems: "center"
   }
 });

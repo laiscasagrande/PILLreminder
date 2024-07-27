@@ -7,6 +7,7 @@ import NavigationBarBottom from "./components/ButtonNavigation";
 
 export default function Home() {
   const LeftContent = (props) => <Avatar.Icon {...props} icon="folder" />;
+const [data, setData] = React.useState('')
 
   const remedy = [
     {
@@ -19,12 +20,25 @@ export default function Home() {
     },
   ];
 
+  const viewData = async () => {
+    try {
+      const db = getFirestore();
+      const querySnapshot = await getDocs(collection(db, "remedy"))
+      setData( querySnapshot)
+      querySnapshot.forEach((doc) => {
+        console.log(`${doc.id} => ${doc.data()}`);
+      });
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
   return (
     <>
     <View style={styles.home}>
     <View style={styles.container}>
-        {remedy.map((pill) => {
-          return <CardPill id={pill.id} name={pill.name}/>;
+        {data.map((pill) => {
+          return <CardPill id={pill.id} name={pill.name} dosage={pill.dosage} period={pill.period}/>;
         })}
       </View>
       <NavigationBarBottom /> 

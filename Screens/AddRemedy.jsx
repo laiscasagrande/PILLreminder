@@ -2,10 +2,24 @@ import { View, StyleSheet } from "react-native";
 import { Text, TextInput, Button } from "react-native-paper";
 import NavigationBarBottom from "./components/ButtonNavigation";
 import { collection, addDoc } from "firebase/firestore"
-
-
+import { createNewRemedy } from "../CloudFirestore";
+import { useState } from "react";
 
 export default function AddRemedy() {
+  const [name, setName] = useState('')
+  const [dosage, setDosage] = useState('') 
+  const [period, setPeriod] = useState('') 
+  const [time, setTime] = useState('') 
+
+  function newRemedy(){
+    const remedyData = {
+      name: name,
+      dosage: dosage,
+      period: period,
+      time: time
+    }
+    createNewRemedy(remedyData)
+  }
 
   return (
     <>
@@ -22,51 +36,48 @@ export default function AddRemedy() {
                   primary: '#06957B', // Remove a borda ao focar
                 },
               }}
-            // value={email}
-            // onChangeText={setEmail}
+            value={name}
+            onChangeText={setName}
             />
             <TextInput
               mode="outlined"
               style={styles.textInput}
               label="Dosagem"
-              secureTextEntry
               theme={{
                 colors: {
                   primary: '#06957B', // Remove a borda ao focar
                 },
               }}
-            // value={password}
-            // onChangeText={setPassword}
+            value={dosage}
+          onChangeText={setDosage}
             />
             <TextInput
               mode="outlined"
               style={styles.textInput}
               label="Período"
-              secureTextEntry
               theme={{
                 colors: {
                   primary: '#06957B', // Remove a borda ao focar
                 },
               }}
-            // value={password}
-            // onChangeText={setPassword}
+            value={period}
+            onChangeText={setPeriod}
             />
             <TextInput
               mode="outlined"
               style={styles.textInput}
               label="Horário"
-              secureTextEntry
               theme={{
                 colors: {
                   primary: '#06957B', // Remove a borda ao focar
                 },
               }}
-            // value={password}
-            // onChangeText={setPassword}
+            value={time}
+            onChangeText={setTime}
             />
           </View>
           <View>
-            <Button style={styles.button} mode="contained" onPress={createNewRemedy}>
+            <Button style={styles.button} mode="contained" onPress={newRemedy}>
               Incluir
             </Button>
           </View>

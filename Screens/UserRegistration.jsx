@@ -15,7 +15,7 @@ export default function UserRegistration({navigation}) {
         //  Signed in
         const user = userCredential.user;
         alert(user.email + " cadastrado!");
-        navigation.navigate("Login");
+        navigation.navigate("Home");
       })
       .catch((error) => {
         const errorCode = error.code;

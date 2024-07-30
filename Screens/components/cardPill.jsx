@@ -2,15 +2,15 @@ import * as React from "react";
 import { Text, View, StyleSheet } from "react-native";
 import { Avatar, Card } from "react-native-paper";
 
-export default function CardPill({ id, name }) {
+export default function CardPill({ id, name, dosage, period, time }) {
   return (
     <Card key={id} style={styles.card}>
       <Text style={styles.text}>{name}</Text>
       <View style={styles.content}>
-        <Text style={styles.dosage}>5mg</Text>
+        <Text style={styles.dosage}>{dosage}mg</Text>
         <View>
-          <Text style={styles.hour}>Daqui a 3h e 45min</Text>
-          <Text style={styles.hour}>Intervalo de 5 horas</Text>
+          <Text style={styles.hour}>{time}</Text>
+          <Text style={styles.hour}>{period}</Text>
         </View>
       </View>
     </Card>

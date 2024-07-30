@@ -11,6 +11,7 @@ export default function CardPill({ id, name, dosage, period, time }) {
         <View>
           <Text style={styles.hour}>{time}</Text>
           <Text style={styles.hour}>{period}</Text>
+          <Text style={styles.hour}>Apagar</Text>
         </View>
       </View>
     </Card>
@@ -28,6 +29,7 @@ const styles = StyleSheet.create({
   },
   card: {
     padding: 10,
+    marginBottom: 20
   },
  text: {
     color: "#06957B",

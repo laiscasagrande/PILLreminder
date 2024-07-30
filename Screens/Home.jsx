@@ -1,6 +1,6 @@
 import { collection, getDocs, getFirestore } from "firebase/firestore";
 import * as React from "react";
-import { StyleSheet, View } from "react-native";
+import { FlatList, StyleSheet, View } from "react-native";
 import NavigationBarBottom from "./components/ButtonNavigation";
 import CardPill from "./components/cardPill";
 
@@ -34,19 +34,20 @@ export default function Home() {
   return (
     <>
       <View style={styles.home}>
-        <View style={styles.container}>
-          {data.map((pill) => {
-            return (
-              <CardPill
-                id={pill.id}
-                name={pill.name}
-                dosage={pill.dosage}
-                period={pill.period}
-                time={pill.time}
-              />
-            );
-          })}
-        </View>
+        <FlatList
+        style={styles.list}
+        data={data}
+        keyExtractor={(item) => item.id}
+        renderItem={({item}) => (
+          <CardPill
+          id={item.id}
+          name={item.name}
+          dosage={item.dosage}
+          period={item.period}
+          time={item.time}
+        />
+        )}
+       />
         <NavigationBarBottom />
       </View>
     </>
@@ -57,10 +58,12 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: "column",
     gap: 50,
-    overflow: "scroll",
   },
   home: {
     flex: 1,
     justifyContent: "space-between",
   },
+  list: {
+    paddingHorizontal: 10
+  }
 });

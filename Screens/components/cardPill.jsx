@@ -1,8 +1,23 @@
+import { deleteDoc, doc, getFirestore } from "firebase/firestore";
 import * as React from "react";
 import { Text, View, StyleSheet } from "react-native";
-import { Avatar, Card } from "react-native-paper";
+import { Avatar, Button, Card } from "react-native-paper";
 
-export default function CardPill({ id, name, dosage, period, time }) {
+export default function CardPill({ id, name, dosage, period, time, onDelete }) {
+
+  const handleDelete = async () => {
+    try {
+      const db = getFirestore();
+      const docRef = doc(db, "remedy", id); // 'remedy' é o nome da coleção e id é o ID do documento
+      await deleteDoc(docRef);
+      if (onDelete) {
+        onDelete(id); // Chama a função onDelete passada como prop para atualizar a lista
+      }
+    } catch (error) {
+      console.error("Error deleting document: ", error);
+    }
+  };
+
   return (
     <Card key={id} style={styles.card}>
       <Text style={styles.text}>{name}</Text>
@@ -11,7 +26,7 @@ export default function CardPill({ id, name, dosage, period, time }) {
         <View>
           <Text style={styles.hour}>{time}</Text>
           <Text style={styles.hour}>{period}</Text>
-          <Text style={styles.hour}>Apagar</Text>
+          <Button style={styles.hour} onPress={handleDelete}>Apagar</Button>
         </View>
       </View>
     </Card>

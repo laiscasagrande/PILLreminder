@@ -31,6 +31,11 @@ export default function Home() {
     viewData();
   }, []);
 
+
+  const handleDelete = (id) => {
+    setData(prevData => prevData.filter(item => item.id !== id));
+  };
+  
   return (
     <>
       <View style={styles.home}>
@@ -45,6 +50,7 @@ export default function Home() {
           dosage={item.dosage}
           period={item.period}
           time={item.time}
+          onDelete={handleDelete}
         />
         )}
        />

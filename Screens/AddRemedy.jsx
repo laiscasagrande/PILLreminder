@@ -5,7 +5,7 @@ import { collection, addDoc } from "firebase/firestore"
 import { createNewRemedy } from "../CloudFirestore";
 import { useState } from "react";
 
-export default function AddRemedy() {
+export default function AddRemedy({navigation}) {
   const [name, setName] = useState('')
   const [dosage, setDosage] = useState('') 
   const [period, setPeriod] = useState('') 
@@ -18,7 +18,7 @@ export default function AddRemedy() {
       period: period,
       time: time
     }
-    createNewRemedy(remedyData)
+    createNewRemedy(remedyData, navigation)
   }
 
   return (

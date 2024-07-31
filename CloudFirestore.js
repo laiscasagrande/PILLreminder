@@ -4,7 +4,7 @@ import { collection, addDoc, getDocs } from "firebase/firestore";
 
 // Initialize Cloud Firestore and get a reference to the service
 
-export const createNewRemedy = async (remedyData) => {
+export const createNewRemedy = async (remedyData, navigation) => {
   try {
     const db = getFirestore();
     const docRef = await addDoc(collection(db, "remedy"), {
@@ -13,6 +13,7 @@ export const createNewRemedy = async (remedyData) => {
       period: remedyData.period,
       time: remedyData.time
     });
+    navigation.navigate("Home");
     console.log("Document written with ID: ", docRef.id);
   } catch (e) {
     console.error("Error adding document: ", e);

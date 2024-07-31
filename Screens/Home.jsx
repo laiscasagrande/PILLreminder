@@ -3,6 +3,7 @@ import * as React from "react";
 import { FlatList, StyleSheet, View } from "react-native";
 import NavigationBarBottom from "./components/ButtonNavigation";
 import CardPill from "./components/cardPill";
+import { useFocusEffect } from "@react-navigation/native";
 
 export default function Home() {
   const [data, setData] = React.useState([]);
@@ -31,6 +32,11 @@ export default function Home() {
     viewData();
   }, []);
 
+  useFocusEffect(
+    React.useCallback(() => {
+      viewData();
+    }, [])
+  );
 
   const handleDelete = (id) => {
     setData(prevData => prevData.filter(item => item.id !== id));

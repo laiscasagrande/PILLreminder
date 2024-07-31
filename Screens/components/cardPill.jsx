@@ -1,10 +1,9 @@
 import { deleteDoc, doc, getFirestore } from "firebase/firestore";
 import * as React from "react";
 import { Text, View, StyleSheet } from "react-native";
-import { Avatar, Button, Card } from "react-native-paper";
+import { Avatar, Button, Card, Icon } from "react-native-paper";
 
 export default function CardPill({ id, name, dosage, period, time, onDelete }) {
-
   const handleDelete = async () => {
     try {
       const db = getFirestore();
@@ -20,13 +19,19 @@ export default function CardPill({ id, name, dosage, period, time, onDelete }) {
 
   return (
     <Card key={id} style={styles.card}>
-      <Text style={styles.text}>{name}</Text>
+      <View style={styles.header}>
+        <Text style={styles.text}>{name}</Text>
+        <Button onPress={handleDelete}>
+        <Icon source="delete" size={27} color="#06957B"/>
+        </Button>
+      </View>
       <View style={styles.content}>
         <Text style={styles.dosage}>{dosage}mg</Text>
         <View>
-          <Text style={styles.hour}>{time}</Text>
-          <Text style={styles.hour}>{period}</Text>
-          <Button style={styles.hour} onPress={handleDelete}>Apagar</Button>
+          <Text style={styles.hour}>
+            {time} em {time} hora(s)
+          </Text>
+          <Text style={styles.hour}>{period} dia(s)</Text>
         </View>
       </View>
     </Card>
@@ -34,6 +39,12 @@ export default function CardPill({ id, name, dosage, period, time, onDelete }) {
 }
 
 const styles = StyleSheet.create({
+  header: {
+display: 'flex',
+flexDirection: 'row',
+justifyContent: 'space-between',
+width: '100%',
+  },
   content: {
     height: 100,
     width: "auto",
@@ -44,9 +55,9 @@ const styles = StyleSheet.create({
   },
   card: {
     padding: 10,
-    marginBottom: 20
+    marginBottom: 20,
   },
- text: {
+  text: {
     color: "#06957B",
     fontSize: 25,
     fontWeight: "bold",
@@ -60,5 +71,5 @@ const styles = StyleSheet.create({
     color: "#06957B",
     fontSize: 15,
     fontWeight: "bold",
-  }
+  },
 });

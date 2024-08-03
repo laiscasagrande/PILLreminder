@@ -1,4 +1,4 @@
-import { View, StyleSheet } from "react-native";
+import { View, StyleSheet, ScrollView } from "react-native";
 import { Text, TextInput, Button } from "react-native-paper";
 import NavigationBarBottom from "./components/ButtonNavigation";
 import { collection, addDoc } from "firebase/firestore"
@@ -23,7 +23,9 @@ export default function AddRemedy({navigation}) {
 
   return (
     <>
+    
       <View style={styles.mainContainer}>
+      <ScrollView contentContainerStyle={styles.mainScroll}>
         <View style={styles.content}>
           <View style={styles.viewInputs}>
             <Text style={styles.title}>ADICIONAR MEDICAMENTO</Text>
@@ -82,6 +84,7 @@ export default function AddRemedy({navigation}) {
             </Button>
           </View>
         </View>
+        </ScrollView>
       </View>
       <NavigationBarBottom />
     </>
@@ -117,7 +120,7 @@ const styles = StyleSheet.create({
     color: "#06957B",
     backgroundColor: "#06957B",
     fontSize: 50,
-    width: 300,
+    width: 300
   },
   footer: {
     backgroundColor: "#06957B",
@@ -132,6 +135,10 @@ const styles = StyleSheet.create({
     flexDirection: "column",
     gap: 30,
     alignItems: "center",
-    marginTop: 50
-  }
+    marginTop: 50,
+  },
+  mainScroll: {
+    flexGrow: 1,
+    justifyContent: "space-between",
+  },
 });

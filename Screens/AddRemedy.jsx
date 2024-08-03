@@ -25,7 +25,7 @@ export default function AddRemedy({navigation}) {
     <>
     
       <View style={styles.mainContainer}>
-      <ScrollView contentContainerStyle={styles.mainScroll}>
+      <ScrollView contentContainerStyle={styles.mainScrollStyle}>
         <View style={styles.content}>
           <View style={styles.viewInputs}>
             <Text style={styles.title}>ADICIONAR MEDICAMENTO</Text>
@@ -137,7 +137,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     marginTop: 50,
   },
-  mainScroll: {
+  mainScrollStyle: {
     flexGrow: 1,
     justifyContent: "space-between",
   },

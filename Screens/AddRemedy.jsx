@@ -54,7 +54,7 @@ export default function AddRemedy({navigation}) {
             <TextInput
               mode="outlined"
               style={styles.textInput}
-              label="Período"
+              label="Por quantos dias?"
               theme={{
                 colors: {
                   primary: '#06957B', // Remove a borda ao focar
@@ -66,7 +66,7 @@ export default function AddRemedy({navigation}) {
             <TextInput
               mode="outlined"
               style={styles.textInput}
-              label="Horário"
+              label="Intervalo (hora)"
               theme={{
                 colors: {
                   primary: '#06957B', // Remove a borda ao focar
@@ -131,6 +131,7 @@ const styles = StyleSheet.create({
     display: "flex",
     flexDirection: "column",
     gap: 30,
-    alignItems: "center"
+    alignItems: "center",
+    marginTop: 50
   }
 });

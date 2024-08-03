@@ -4,6 +4,7 @@ import { FlatList, StyleSheet, View } from "react-native";
 import NavigationBarBottom from "./components/ButtonNavigation";
 import CardPill from "./components/cardPill";
 import { useFocusEffect } from "@react-navigation/native";
+import { Text } from "react-native-paper";
 
 export default function Home() {
   const [data, setData] = React.useState([]);
@@ -45,6 +46,7 @@ export default function Home() {
   return (
     <>
       <View style={styles.home}>
+      <Text style={styles.text}>Programados</Text>
         <FlatList
         style={styles.list}
         data={data}
@@ -77,5 +79,12 @@ const styles = StyleSheet.create({
   },
   list: {
     paddingHorizontal: 10
+  },
+  text: {
+    fontSize: 40,
+    marginTop: 50,
+    marginBottom: 40,
+    color: "#aaaaaa",
+    fontWeight: "bold"
   }
 });
